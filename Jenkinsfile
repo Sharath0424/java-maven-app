@@ -35,15 +35,15 @@ pipeline {
                     withDockerRegistry(credentialsId: 'docker', toolname: 'docker'){
                 
                         sh '''docker build -t javamavenapp .
-                        docker tag javamavenapp aseemakram19/javamavenapp:latest
-                        docker push  aseemakram19/javamavenapp:latest'''
+                        docker tag javamavenapp sharathcloud/javamavenapp:latest
+                        docker push  sharathcloud/javamavenapp:latest'''
                       } 
                 }
             }
         }
         stage('docker container of app') {
             steps {
-               sh 'docker run -d -p 9000:8080 --name javamavenapp_container -t aseemakram19/javamavenapp:latest'
+               sh 'docker run -d -p 9000:8080 --name javamavenapp_container -t sharathcloud/javamavenapp:latest'
             }
         }
         
